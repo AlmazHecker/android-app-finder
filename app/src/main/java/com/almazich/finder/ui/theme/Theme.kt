@@ -39,13 +39,12 @@ val DarkColorScheme = darkColorScheme(
 )
 
 
-
 @Composable
 fun FinderTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
+    val darkTheme: Boolean = isSystemInDarkTheme()
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current

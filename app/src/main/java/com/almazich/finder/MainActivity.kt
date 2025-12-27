@@ -10,7 +10,6 @@ import com.google.mlkit.common.model.RemoteModelManager
 import com.google.mlkit.vision.digitalink.recognition.*
 
 class MainActivity : ComponentActivity() {
-    private var darkThemeState = mutableStateOf(true)
     private lateinit var recognizer: DigitalInkRecognizer
     private var model: DigitalInkRecognitionModel? = null
 
@@ -31,12 +30,10 @@ class MainActivity : ComponentActivity() {
         }
 
         setContent {
-            FinderTheme(darkTheme = darkThemeState.value) {
+            FinderTheme() {
                 DrawingScreenWithLoading(
-                    darkTheme = darkThemeState.value,
                     onRecognize = ::recognizeInk,
                     onLaunchApp = { launchApp(it) },
-                    onToggleTheme = { darkThemeState.value = !darkThemeState.value },
                     isModelLoading = isModelLoading.value
                 )
             }

@@ -27,10 +27,8 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun DrawingScreen(
-    darkTheme: Boolean,
     onRecognize: (Ink, (String) -> Unit) -> Unit,
     onLaunchApp: (String) -> Unit,
-    onToggleTheme: () -> Unit
 ) {
     var drawingState by remember { mutableStateOf(DrawingState()) }
     val currentStroke = remember { mutableStateOf(Ink.Stroke.builder()) }
@@ -70,23 +68,6 @@ fun DrawingScreen(
     val mutedTextColor = MaterialTheme.colorScheme.onSurfaceVariant
 
     Column(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = WindowInsets.statusBars.asPaddingValues().calculateTopPadding(), start = 16.dp, end = 16.dp, bottom = 16.dp),
-            horizontalArrangement = Arrangement.End
-        ) {
-            Button(
-                onClick = onToggleTheme,
-                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
-            ) {
-                Text(
-                    text = if (darkTheme) "Dark Mode" else "Light Mode",
-                    color = MaterialTheme.colorScheme.onPrimary
-                )
-            }
-        }
-
         Card(
             modifier = Modifier.fillMaxWidth().height(300.dp).padding(16.dp),
             colors = CardDefaults.cardColors(containerColor = surfaceColor)

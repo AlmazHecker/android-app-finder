@@ -17,18 +17,14 @@ import com.google.mlkit.vision.digitalink.recognition.*
 
 @Composable
 fun DrawingScreenWithLoading(
-    darkTheme: Boolean,
     onRecognize: (Ink, (String) -> Unit) -> Unit,
     onLaunchApp: (String) -> Unit,
-    onToggleTheme: () -> Unit,
     isModelLoading: Boolean
 ) {
     Box(modifier = Modifier.fillMaxSize()) {
         DrawingScreen(
-            darkTheme = darkTheme,
             onRecognize = onRecognize,
             onLaunchApp = onLaunchApp,
-            onToggleTheme = onToggleTheme
         )
 
         if (isModelLoading) {
