@@ -1,1 +1,0 @@
-4. Add an app widget for quick access
