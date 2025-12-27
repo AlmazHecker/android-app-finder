@@ -67,7 +67,7 @@ fun DrawingScreen(
     val strokeColor = MaterialTheme.colorScheme.onSurface
     val mutedTextColor = MaterialTheme.colorScheme.onSurfaceVariant
 
-    Column(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
+    Column(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background).systemBarsPadding()) {
         Card(
             modifier = Modifier.fillMaxWidth().height(300.dp).padding(16.dp),
             colors = CardDefaults.cardColors(containerColor = surfaceColor)
