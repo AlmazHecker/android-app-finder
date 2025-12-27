@@ -90,8 +90,15 @@ fun DrawingScreen(
                                         .addPoint(Ink.Point.create(position.x, position.y, timestamp))
                                 }
                                 pointer.pressed -> {
-                                    drawingState.currentPath.lineTo(position.x, position.y)
-                                    currentStroke.value.addPoint(Ink.Point.create(position.x, position.y, timestamp))
+                                    val newPath = Path().apply {
+                                        addPath(drawingState.currentPath)
+                                        lineTo(position.x, position.y)
+                                    }
+                                    drawingState = drawingState.copy(currentPath = newPath)
+
+                                    currentStroke.value.addPoint(
+                                        Ink.Point.create(position.x, position.y, timestamp)
+                                    )
                                 }
                                 else -> {
                                     if (drawingState.isDrawing) {
